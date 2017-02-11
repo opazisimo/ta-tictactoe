@@ -8,20 +8,16 @@ $bold: 500;
 $font: 'Oswald', sans-serif;
 
 /* Generales */
-.pantallabase {
+body{
+  background-color: $rich;
+}
+
+.pantalla {
   width: 100%;
   font-family: $font;
   font-weight: $light;
   background-color: $rich;
   color: $ghos;
-}
-.pantalla {
-  @extend .pantallabase;
-  height: 100vh;
-}
-.pantalla1 {
-  @extend .pantallabase;
-  height: auto;
 }
 
 .boton{

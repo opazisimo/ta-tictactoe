@@ -1,16 +1,13 @@
 /* Generales */
-.pantallabase, .pantalla, .pantalla1 {
+body {
+  background-color: #040f16; }
+
+.pantalla {
   width: 100%;
   font-family: "Oswald", sans-serif;
   font-weight: 300;
   background-color: #040f16;
   color: #fbfbff; }
-
-.pantalla {
-  height: 100vh; }
-
-.pantalla1 {
-  height: auto; }
 
 .boton {
   background-color: #b80c09;

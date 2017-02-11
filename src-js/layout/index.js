@@ -15,8 +15,8 @@ module.exports = function layout(box){
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Historial</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/historial">Historial</a></li>
           </ul>
         </div>
       </div>
