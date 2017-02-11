@@ -8,15 +8,23 @@ $bold: 500;
 $font: 'Oswald', sans-serif;
 
 /* Generales */
-.pantalla {
+.pantallabase {
   width: 100%;
-  height: 100vh;
   font-family: $font;
   font-weight: $light;
   background-color: $rich;
   color: $ghos;
   border-bottom: 2px solid $rojo;
 }
+.pantalla {
+  @extend .pantallabase;
+  height: 100vh;
+}
+.pantalla1 {
+  @extend .pantallabase;
+  height: auto;
+}
+
 .boton{
   background-color: $rojo;
   color: $ghos;
@@ -56,16 +64,7 @@ $font: 'Oswald', sans-serif;
 
 
 /* Pantalla 2: Jugadores */
-.dos{
-  margin-top: 20vh;
-  input{
-    width: 100%;
-    color: $rich;
-    margin-bottom: 5vh;
-  }
-  p{
-    font-size: 2.5rem;
-  }
+.placeh{
   ::-webkit-input-placeholder {
      color: $rojo;
   }
@@ -81,6 +80,19 @@ $font: 'Oswald', sans-serif;
   :-ms-input-placeholder {
      color: $rojo;
   }
+}
+
+.dos{
+  margin-top: 20vh;
+  input{
+    width: 100%;
+    color: $rich;
+    margin-bottom: 5vh;
+  }
+  p{
+    font-size: 2.5rem;
+  }
+  @extend .placeh;
 }
 
 /* Pantalla 3: gato */
@@ -102,7 +114,7 @@ $font: 'Oswald', sans-serif;
     font-size: 2rem;
   }
   .resp{
-    font-size: 50px;
+    font-size: 30px;
     color: $rojo;
   }
 }
@@ -115,5 +127,30 @@ $font: 'Oswald', sans-serif;
   margin-bottom: 20px;
   p{
     font-size: 2rem;
+  }
+}
+
+/* Pantalla 5: comentarios */
+
+.cajacomentarios{
+ /* height: 30vh;
+  overflow-y: scroll;*/
+  margin-bottom: 30px;
+  .comentario {
+    @extend .historial;
+    text-align: left;
+  }
+}
+.formulario{
+  @extend .placeh;
+  input{
+    display: block;
+    width: 100%;
+    color: $rich;
+    margin-bottom: 10px;
+  }
+  textarea{
+    @extend input;
+    resize: none;
   }
 }

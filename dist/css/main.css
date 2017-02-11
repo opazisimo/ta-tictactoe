@@ -1,12 +1,17 @@
 /* Generales */
-.pantalla {
+.pantallabase, .pantalla, .pantalla1 {
   width: 100%;
-  height: 100vh;
   font-family: "Oswald", sans-serif;
   font-weight: 300;
   background-color: #040f16;
   color: #fbfbff;
   border-bottom: 2px solid #b80c09; }
+
+.pantalla {
+  height: 100vh; }
+
+.pantalla1 {
+  height: auto; }
 
 .boton {
   background-color: #b80c09;
@@ -37,22 +42,26 @@
   margin-top: 20vh; }
 
 /* Pantalla 2: Jugadores */
+.placeh ::-webkit-input-placeholder, .dos ::-webkit-input-placeholder, .formulario ::-webkit-input-placeholder {
+  color: #b80c09; }
+
+.placeh :-moz-placeholder, .dos :-moz-placeholder, .formulario :-moz-placeholder {
+  color: #b80c09; }
+
+.placeh ::-moz-placeholder, .dos ::-moz-placeholder, .formulario ::-moz-placeholder {
+  color: #b80c09; }
+
+.placeh :-ms-input-placeholder, .dos :-ms-input-placeholder, .formulario :-ms-input-placeholder {
+  color: #b80c09; }
+
 .dos {
   margin-top: 20vh; }
-  .dos input {
+  .dos input, .dos .formulario textarea, .formulario .dos textarea {
     width: 100%;
     color: #040f16;
     margin-bottom: 5vh; }
   .dos p {
     font-size: 2.5rem; }
-  .dos ::-webkit-input-placeholder {
-    color: #b80c09; }
-  .dos :-moz-placeholder {
-    color: #b80c09; }
-  .dos ::-moz-placeholder {
-    color: #b80c09; }
-  .dos :-ms-input-placeholder {
-    color: #b80c09; }
 
 /* Pantalla 3: gato */
 .tablero {
@@ -69,14 +78,31 @@
   font-size: 2rem; }
 
 .tres .resp {
-  font-size: 50px;
+  font-size: 30px;
   color: #b80c09; }
 
 /* Pantalla 4: historial */
-.historial {
+.historial, .cajacomentarios .comentario {
   width: 100%;
   border: 2px solid #01baef;
   padding: 20px;
   margin-bottom: 20px; }
-  .historial p {
+  .historial p, .cajacomentarios .comentario p {
     font-size: 2rem; }
+
+/* Pantalla 5: comentarios */
+.cajacomentarios {
+  /* height: 30vh;
+  overflow-y: scroll;*/
+  margin-bottom: 30px; }
+  .cajacomentarios .comentario {
+    text-align: left; }
+
+.formulario input, .formulario textarea {
+  display: block;
+  width: 100%;
+  color: #040f16;
+  margin-bottom: 10px; }
+
+.formulario textarea {
+  resize: none; }
