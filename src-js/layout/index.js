@@ -24,7 +24,7 @@ module.exports = function layout(box){
 
     <div class="container">
       <div class="row">
-        <div id="info">
+        <div id="info" class="col-xs-12">
           ${box}
         </div>
       </div>
