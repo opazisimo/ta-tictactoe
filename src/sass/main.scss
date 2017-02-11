@@ -8,7 +8,6 @@ $bold: 500;
 $font: 'Oswald', sans-serif;
 
 /* Generales */
-
 .pantalla {
   width: 100%;
   height: 100vh;
@@ -28,8 +27,8 @@ $font: 'Oswald', sans-serif;
     color: $ghos;
   }
 }
-/* Navbar */
 
+/* Navbar */
 .navbar {
   background-color: transparent !important;
   border: none !important;
@@ -77,5 +76,28 @@ $font: 'Oswald', sans-serif;
 
   :-ms-input-placeholder {
      color: $rojo;
+  }
+}
+
+/* pantalla 3 y 4 gato */
+.tablero{
+  margin-bottom: 100px;
+  .gato{
+    height: 80px;
+    &.lado{
+      border-left: 4px solid $cyan;
+      border-right: 4px solid $cyan;
+    }
+    &.bajo{
+      border-bottom: 4px solid $cyan;
+    }
+  }
+}
+.tres{
+  h3{
+    text-transform: uppercase;
+  }
+  p{
+    font-size: 2rem;
   }
 }

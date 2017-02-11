@@ -50,3 +50,20 @@
     color: #b80c09; }
   .dos :-ms-input-placeholder {
     color: #b80c09; }
+
+/* pantalla 3 y 4 gato */
+.tablero {
+  margin-bottom: 100px; }
+  .tablero .gato {
+    height: 80px; }
+    .tablero .gato.lado {
+      border-left: 4px solid #01baef;
+      border-right: 4px solid #01baef; }
+    .tablero .gato.bajo {
+      border-bottom: 4px solid #01baef; }
+
+.tres h3 {
+  text-transform: uppercase; }
+
+.tres p {
+  font-size: 2rem; }
