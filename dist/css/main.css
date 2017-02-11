@@ -11,11 +11,16 @@
 .boton {
   background-color: #b80c09;
   color: #fbfbff;
-  margin-top: 5vh;
   text-transform: uppercase; }
   .boton:hover {
-    background-color: #0b4f6c;
+    background-color: #01baef;
     color: #fbfbff; }
+
+.sep {
+  margin: 30px 0; }
+
+.titulo {
+  text-transform: uppercase; }
 
 /* Navbar */
 .navbar {
@@ -43,27 +48,35 @@
   .dos ::-webkit-input-placeholder {
     color: #b80c09; }
   .dos :-moz-placeholder {
-    /* Firefox 18- */
     color: #b80c09; }
   .dos ::-moz-placeholder {
-    /* Firefox 19+ */
     color: #b80c09; }
   .dos :-ms-input-placeholder {
     color: #b80c09; }
 
-/* pantalla 3 y 4 gato */
+/* Pantalla 3: gato */
 .tablero {
   margin-bottom: 100px; }
   .tablero .gato {
-    height: 80px; }
+    text-align: center; }
     .tablero .gato.lado {
       border-left: 4px solid #01baef;
       border-right: 4px solid #01baef; }
     .tablero .gato.bajo {
       border-bottom: 4px solid #01baef; }
 
-.tres h3 {
-  text-transform: uppercase; }
-
 .tres p {
   font-size: 2rem; }
+
+.tres .resp {
+  font-size: 50px;
+  color: #b80c09; }
+
+/* Pantalla 4: historial */
+.historial {
+  width: 100%;
+  border: 2px solid #01baef;
+  padding: 20px;
+  margin-bottom: 20px; }
+  .historial p {
+    font-size: 2rem; }

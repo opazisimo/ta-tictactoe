@@ -20,14 +20,18 @@ $font: 'Oswald', sans-serif;
 .boton{
   background-color: $rojo;
   color: $ghos;
-  margin-top: 5vh;
   text-transform: uppercase;
   &:hover{
-    background-color: $azul;
+    background-color: $cyan;
     color: $ghos;
   }
 }
-
+.sep{
+  margin: 30px 0;
+}
+.titulo{
+  text-transform: uppercase;
+}
 /* Navbar */
 .navbar {
   background-color: transparent !important;
@@ -66,11 +70,11 @@ $font: 'Oswald', sans-serif;
      color: $rojo;
   }
 
-  :-moz-placeholder { /* Firefox 18- */
+  :-moz-placeholder {
      color: $rojo;
   }
 
-  ::-moz-placeholder {  /* Firefox 19+ */
+  ::-moz-placeholder {
      color: $rojo;
   }
 
@@ -79,11 +83,11 @@ $font: 'Oswald', sans-serif;
   }
 }
 
-/* pantalla 3 y 4 gato */
+/* Pantalla 3: gato */
 .tablero{
   margin-bottom: 100px;
   .gato{
-    height: 80px;
+    text-align: center;
     &.lado{
       border-left: 4px solid $cyan;
       border-right: 4px solid $cyan;
@@ -94,9 +98,21 @@ $font: 'Oswald', sans-serif;
   }
 }
 .tres{
-  h3{
-    text-transform: uppercase;
+  p{
+    font-size: 2rem;
   }
+  .resp{
+    font-size: 50px;
+    color: $rojo;
+  }
+}
+
+/* Pantalla 4: historial */
+.historial {
+  width: 100%;
+  border: 2px solid $cyan;
+  padding: 20px;
+  margin-bottom: 20px;
   p{
     font-size: 2rem;
   }
