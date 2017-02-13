@@ -13,7 +13,7 @@ page('/jugadores', function(ctx, next){
   var botonComenzar = document.getElementById('comenzar');
 
   botonComenzar.addEventListener('click', function(){
-    if(document.getElementById('player1').value != null ||  jdocument.getElementById('player2').value != 0){
+    if(document.getElementById('player1').value != null && document.getElementById('player2').value != null &&  document.getElementById('player1').value != 0 && document.getElementById('player2').value != 0){
       window.location = '/juego';
     }else{
       alert('Campos obligatorios');
