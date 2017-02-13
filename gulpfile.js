@@ -22,7 +22,7 @@ gulp.task('webserver', function() {
   gulp.src('dist/')
     .pipe(webserver({
       fallback: 'index.html',
-      livereload: true,
+      //livereload: true,
       directoryListing: false,
       /*open: true*/
     }));
