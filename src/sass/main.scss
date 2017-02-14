@@ -109,8 +109,11 @@ body{
     font-size: 2rem;
   }
   .resp{
-    font-size: 30px;
+    font-family: 'Arial' !important;
+    font-size: 70px;
     color: $rojo;
+    height: 80px;
+    width: 100%;
   }
 }
 

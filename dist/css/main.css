@@ -74,8 +74,11 @@ body {
   font-size: 2rem; }
 
 .tres .resp {
-  font-size: 30px;
-  color: #b80c09; }
+  font-family: 'Arial' !important;
+  font-size: 70px;
+  color: #b80c09;
+  height: 80px;
+  width: 100%; }
 
 /* Pantalla 4: historial */
 .historial, .cajacomentarios .comentario {

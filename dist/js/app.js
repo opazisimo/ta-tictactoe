@@ -2616,35 +2616,35 @@ module.exports = function gato(jugadorActual, player1, player2, movP1, movP2) {
             <div class="col-md-4 col-md-offset-4 col-xs-12">
               <div class="row">
                 <div class="col-xs-4 gato bajo">
-                  <p class="resp" id="a1">O</p>
+                  <p class="resp" id="a1"></p>
                 </div>
                 <div class="col-xs-4 gato lado bajo">
-                  <p class="resp" id="a2">O</p>
+                  <p class="resp" id="a2"></p>
                 </div>
                 <div class="col-xs-4 gato bajo">
-                  <p class="resp" id="a3">X</p>
+                  <p class="resp" id="a3"></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-4 gato bajo">
-                  <p class="resp" id="b1">X</p>
+                  <p class="resp" id="b1"></p>
                 </div>
                 <div class="col-xs-4 gato lado bajo">
-                  <p class="resp" id="b2">O</p>
+                  <p class="resp" id="b2"></p>
                 </div>
                 <div class="col-xs-4 gato bajo">
-                  <p class="resp" id="b3">X</p>
+                  <p class="resp" id="b3"></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-4 gato">
-                  <p class="resp" id="c1">O</p>
+                  <p class="resp" id="c1"></p>
                 </div>
                 <div class="col-xs-4 gato lado">
-                  <p class="resp" id="c2">X</p>
+                  <p class="resp" id="c2"></p>
                 </div>
                 <div class="col-xs-4 gato">
-                  <p class="resp" id="c3">O</p>
+                  <p class="resp" id="c3"></p>
                 </div>
               </div>
             </div>
@@ -2659,7 +2659,8 @@ module.exports = function gato(jugadorActual, player1, player2, movP1, movP2) {
             <p>Ganó Emmanuel!</p> <button class="btn boton">Mandar al historial</button>
           </div>
         </div>
-      </div>`;
+      </div>
+      `;
 };
 
 },{"yo-yo":8}],20:[function(require,module,exports){
@@ -2746,15 +2747,48 @@ page('/juego', function (ctx, next) {
   title('Gato Locoo - A Jugar!');
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
+
+  var a1 = document.getElementById('a1');
+  var a2 = document.getElementById('a2');
+  var a3 = document.getElementById('a3');
+
+  var b1 = document.getElementById('b1');
+  var b2 = document.getElementById('b2');
+  var b3 = document.getElementById('b3');
+
+  var c1 = document.getElementById('c1');
+  var c2 = document.getElementById('c2');
+  var c3 = document.getElementById('c3');
+
+  function clickear(div) {
+    div.addEventListener('click', function () {
+      div.innerHTML = 'X';
+    });
+    div.addEventListener('contextmenu', function () {
+      div.innerHTML = 'O';
+    });
+  }
+
+  clickear(a1);
+  clickear(a2);
+  clickear(a3);
+
+  clickear(b1);
+  clickear(b2);
+  clickear(b3);
+
+  clickear(c1);
+  clickear(c2);
+  clickear(c3);
 });
 
 },{"./template":26,"empty-element":3,"page":4,"title":7}],26:[function(require,module,exports){
 var yo = require('yo-yo');
 var gato = require('../gato');
-
 var pl1 = sessionStorage.getItem('pl1');
 var pl2 = sessionStorage.getItem('pl2');
 
+//
 module.exports = gato('Susana', pl1, pl2, '2', '3');
 
 },{"../gato":19,"yo-yo":8}],27:[function(require,module,exports){
