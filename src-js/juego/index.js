@@ -29,13 +29,15 @@ page('/juego', function(ctx, next){
     div.addEventListener('click', function(){
       div.innerHTML =  x;
       equis.push(x);
-      console.log(equis.lenght);
+      var xguarda = sessionStorage.setItem('xguarda', equis.length);
+      console.log(xguarda);
       check();
     });
-    div.addEventListener('contextmenu', function(ev) {
-        ev.preventDefault();
+    div.addEventListener('contextmenu', function() {
         div.innerHTML = o;
         oes.push(o);
+        var oguarda = sessionStorage.setItem('oguarda', oes.length);
+        console.log(oguarda);
         check();
     }, false);
   }

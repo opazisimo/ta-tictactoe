@@ -1,6 +1,7 @@
 var yo = require('yo-yo');
 
 module.exports = function tablero(){
+
     return yo`
             <div class="tablero">
               <div class="col-md-4 col-md-offset-4 col-xs-12">
