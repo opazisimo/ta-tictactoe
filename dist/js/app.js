@@ -2603,70 +2603,24 @@ module.exports = layout(coment);
 },{"../layout":29,"yo-yo":8}],19:[function(require,module,exports){
 var yo = require('yo-yo');
 
-module.exports = function gato(turno, mp1, mp2) {
-  var pl1 = sessionStorage.getItem('pl1');
-  var pl2 = sessionStorage.getItem('pl2');
-
-  function game(player1, player2, movP1, movP2) {
-    return yo`
-        <div class="tres col-xs-12">
-          <div class="row">
-            <div class="text-center col-xs-12">
-              ${turno}
-            </div>
+module.exports = function gato(turno, tablero, movs) {
+  return yo`
+      <div class="tres col-xs-12">
+        <div class="row">
+          <div class="text-center col-xs-12">
+            ${turno}
           </div>
-          <div class="row">
-            <div class="tablero">
-              <div class="col-md-4 col-md-offset-4 col-xs-12">
-                <div class="row">
-                  <div class="col-xs-4 gato bajo">
-                    <p class="resp" id="a1"></p>
-                  </div>
-                  <div class="col-xs-4 gato lado bajo">
-                    <p class="resp" id="a2"></p>
-                  </div>
-                  <div class="col-xs-4 gato bajo">
-                    <p class="resp" id="a3"></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 gato bajo">
-                    <p class="resp" id="b1"></p>
-                  </div>
-                  <div class="col-xs-4 gato lado bajo">
-                    <p class="resp" id="b2"></p>
-                  </div>
-                  <div class="col-xs-4 gato bajo">
-                    <p class="resp" id="b3"></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 gato">
-                    <p class="resp" id="c1"></p>
-                  </div>
-                  <div class="col-xs-4 gato lado">
-                    <p class="resp" id="c2"></p>
-                  </div>
-                  <div class="col-xs-4 gato">
-                    <p class="resp" id="c3"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-xs-12">
-              <p>Movimientos ${player1}: <em>${movP1}</em></p>
-              <p>Movimientos ${player2}: <em>${movP2}</em></p>
-            </div>
+        </div>
+        <div class="row">
+          ${tablero}
+          ${movs}
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center sep">
+            <p>Ganó Emmanuel!</p> <button class="btn boton">Mandar al historial</button>
           </div>
-          <div class="row">
-            <div class="col-xs-12 text-center sep">
-              <p>Ganó Emmanuel!</p> <button class="btn boton">Mandar al historial</button>
-            </div>
-          </div>
-        </div>`;
-  }
-
-  return game(pl1, pl2, mp1, mp2);
+        </div>
+      </div>`;
 };
 
 },{"yo-yo":8}],20:[function(require,module,exports){
@@ -2907,11 +2861,13 @@ page('/juego', function (ctx, next) {
 var yo = require('yo-yo');
 var gato = require('../gato');
 var turno = require('../turno');
+var tablero = require('../tablero');
+var movs = require('../movs');
 
 //
-module.exports = gato(turno(), 'mp1', 'mp2');
+module.exports = gato(turno(), tablero(), movs('8', '9'));
 
-},{"../gato":19,"../turno":30,"yo-yo":8}],27:[function(require,module,exports){
+},{"../gato":19,"../movs":30,"../tablero":31,"../turno":32,"yo-yo":8}],27:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -3004,6 +2960,65 @@ module.exports = function layout(box) {
 };
 
 },{"yo-yo":8}],30:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = function movs(x, o) {
+
+  var pl1 = sessionStorage.getItem('pl1');
+  var pl2 = sessionStorage.getItem('pl2');
+
+  return yo`
+          <div class="col-md-4 col-xs-12">
+            <p>Movimientos ${pl1}: <em>${x}</em></p>
+            <p>Movimientos ${pl2}: <em>${o}</em></p>
+          </div>`;
+};
+
+},{"yo-yo":8}],31:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = function tablero() {
+  return yo`
+            <div class="tablero">
+              <div class="col-md-4 col-md-offset-4 col-xs-12">
+                <div class="row">
+                  <div class="col-xs-4 gato bajo">
+                    <p class="resp" id="a1"></p>
+                  </div>
+                  <div class="col-xs-4 gato lado bajo">
+                    <p class="resp" id="a2"></p>
+                  </div>
+                  <div class="col-xs-4 gato bajo">
+                    <p class="resp" id="a3"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4 gato bajo">
+                    <p class="resp" id="b1"></p>
+                  </div>
+                  <div class="col-xs-4 gato lado bajo">
+                    <p class="resp" id="b2"></p>
+                  </div>
+                  <div class="col-xs-4 gato bajo">
+                    <p class="resp" id="b3"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4 gato">
+                    <p class="resp" id="c1"></p>
+                  </div>
+                  <div class="col-xs-4 gato lado">
+                    <p class="resp" id="c2"></p>
+                  </div>
+                  <div class="col-xs-4 gato">
+                    <p class="resp" id="c3"></p>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+};
+
+},{"yo-yo":8}],32:[function(require,module,exports){
 var yo = require('yo-yo');
 
 var turni = 'hola';

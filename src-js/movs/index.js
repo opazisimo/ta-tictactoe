@@ -1,3 +1,5 @@
+var yo = require('yo-yo');
+
 module.exports = function movs(x,o){
 
   var pl1 = sessionStorage.getItem('pl1');
