@@ -2732,6 +2732,7 @@ page('/juego', function (ctx, next) {
       var xguarda = sessionStorage.setItem('xguarda', equis.length);
       console.log(xguarda);
       check();
+      document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
     });
     div.addEventListener('contextmenu', function () {
       div.innerHTML = o;
@@ -2739,6 +2740,7 @@ page('/juego', function (ctx, next) {
       var oguarda = sessionStorage.setItem('oguarda', oes.length);
       console.log(oguarda);
       check();
+      document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl1;
     }, false);
   }
   clickear(tablero.a1);
@@ -2905,7 +2907,7 @@ var layout = require('../layout');
 var jugadores = yo`      <div class="dos">
         <div class="row">
           <div class="col-md-6 text-center col-xs-12">
-            <p>Ingrese el nombre del jugador 1</p>
+            <p>Ingrese el nombre del jugador 1 <strong>(X)</strong></p>
           </div>
           <div class="col-md-6 col-xs-12">
             <input id="player1" type="text" placeholder="Jugador 1"/ >
@@ -2913,7 +2915,7 @@ var jugadores = yo`      <div class="dos">
         </div>
         <div class="row">
           <div class="col-md-6 text-center col-xs-12">
-            <p>Ingrese el nombre del jugador 2</p>
+            <p>Ingrese el nombre del jugador 2 <strong>(O)</strong></p>
           </div>
           <div class="col-md-6 col-xs-12">
             <input id="player2" type="text" placeholder="Jugador 2" />
@@ -3027,11 +3029,10 @@ module.exports = function tablero() {
 
 },{"yo-yo":8}],32:[function(require,module,exports){
 var yo = require('yo-yo');
-
-var turni = 'hola';
+var pl1 = sessionStorage.getItem('pl1');
 
 module.exports = function turno() {
-    return yo`<h3 clase="titulo">Turno de ${turni}</h3>`;
+    return yo`<h3 clase="titulo" id='turnoactual'>Turno de ${pl1}</h3>`;
 };
 
 },{"yo-yo":8}]},{},[24]);

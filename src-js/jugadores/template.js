@@ -4,7 +4,7 @@ var layout = require('../layout');
 var jugadores = yo`      <div class="dos">
         <div class="row">
           <div class="col-md-6 text-center col-xs-12">
-            <p>Ingrese el nombre del jugador 1</p>
+            <p>Ingrese el nombre del jugador 1 <strong>(X)</strong></p>
           </div>
           <div class="col-md-6 col-xs-12">
             <input id="player1" type="text" placeholder="Jugador 1"/ >
@@ -12,7 +12,7 @@ var jugadores = yo`      <div class="dos">
         </div>
         <div class="row">
           <div class="col-md-6 text-center col-xs-12">
-            <p>Ingrese el nombre del jugador 2</p>
+            <p>Ingrese el nombre del jugador 2 <strong>(O)</strong></p>
           </div>
           <div class="col-md-6 col-xs-12">
             <input id="player2" type="text" placeholder="Jugador 2" />

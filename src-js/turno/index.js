@@ -1,7 +1,6 @@
 var yo = require('yo-yo');
-
-var turni = 'hola';
+var pl1 = sessionStorage.getItem('pl1');
 
 module.exports = function turno(){
-    return yo`<h3 clase="titulo">Turno de ${turni}</h3>`;
+    return yo`<h3 clase="titulo" id='turnoactual'>Turno de ${pl1}</h3>`;
   }

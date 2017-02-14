@@ -32,6 +32,7 @@ page('/juego', function(ctx, next){
       var xguarda = sessionStorage.setItem('xguarda', equis.length);
       console.log(xguarda);
       check();
+      document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
 
     });
     div.addEventListener('contextmenu', function() {
@@ -40,6 +41,7 @@ page('/juego', function(ctx, next){
         var oguarda = sessionStorage.setItem('oguarda', oes.length);
         console.log(oguarda);
         check();
+        document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl1;
     }, false);
   }
   clickear(tablero.a1);
