@@ -2752,7 +2752,10 @@ page('/juego', function (ctx, next) {
 var yo = require('yo-yo');
 var gato = require('../gato');
 
-module.exports = gato('Susana', 'Javito', 'Susana', '2', '3');
+var pl1 = sessionStorage.getItem('pl1');
+var pl2 = sessionStorage.getItem('pl2');
+
+module.exports = gato('Susana', pl1, pl2, '2', '3');
 
 },{"../gato":19,"yo-yo":8}],27:[function(require,module,exports){
 var page = require('page');
@@ -2771,8 +2774,8 @@ page('/jugadores', function (ctx, next) {
 
   botonComenzar.addEventListener('click', function () {
     if (document.getElementById('player1').value != null && document.getElementById('player2').value != null && document.getElementById('player1').value != 0 && document.getElementById('player2').value != 0) {
-      localStorage.setItem("Jugador 1", jugador1);
-      localStorage.setItem("Jugador 2", jugador2);
+      sessionStorage.setItem('pl1', document.getElementById('player1').value);
+      sessionStorage.setItem('pl2', document.getElementById('player2').value);
       window.location = '/juego';
     } else {
       alert('Campos obligatorios');
