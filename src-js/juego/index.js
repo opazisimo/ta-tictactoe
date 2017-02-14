@@ -24,10 +24,13 @@ page('/juego', function(ctx, next){
     div.addEventListener('click', function(){
       div.innerHTML = 'X';
     });
-    div.addEventListener('contextmenu', function(){
-      div.innerHTML = 'O';
-    });
+    div.addEventListener('contextmenu', function(ev) {
+        ev.preventDefault();
+        div.innerHTML = 'O';
+    }, false);
   }
+
+
 
   clickear(a1);
   clickear(a2);

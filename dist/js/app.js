@@ -2764,9 +2764,10 @@ page('/juego', function (ctx, next) {
     div.addEventListener('click', function () {
       div.innerHTML = 'X';
     });
-    div.addEventListener('contextmenu', function () {
+    div.addEventListener('contextmenu', function (ev) {
+      ev.preventDefault();
       div.innerHTML = 'O';
-    });
+    }, false);
   }
 
   clickear(a1);
