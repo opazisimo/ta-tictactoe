@@ -2600,100 +2600,15 @@ var coment = yo`      <div class="cuatro">
 
 module.exports = layout(coment);
 
-},{"../layout":28,"yo-yo":8}],19:[function(require,module,exports){
-var page = require('page');
-var empty = require('empty-element');
-var template = require('./template');
-var title = require('title');
-
-page('/historial', function (ctx, next) {
-  title('Gato Locoo - Historial');
-  var main = document.getElementById('screen');
-  empty(main).appendChild(template);
-});
-
-},{"./template":20,"empty-element":3,"page":4,"title":7}],20:[function(require,module,exports){
+},{"../layout":29,"yo-yo":8}],19:[function(require,module,exports){
 var yo = require('yo-yo');
-var layout = require('../layout');
 
-var historial = yo`      <div class="cuatro">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 text-center">
-            <h3 clase="titulo">Historial</h3>
-            <div class="historial">
-              <p>Emmanuel le ganó a Irene en 3 movimientos</p>
-              <button class="btn boton" id="comentar1">Comentar</button>
-            </div>
-            <div class="historial">
-              <p>Emmanuel le ganó a Eduardo en 4 movimientos</p>
-              <button class="btn boton" id="comentar2">Comentar</button>
-            </div>
-          </div>
-        </div>
-      </div>`;
-
-module.exports = layout(historial);
-
-},{"../layout":28,"yo-yo":8}],21:[function(require,module,exports){
-var page = require('page');
-var empty = require('empty-element');
-var template = require('./template');
-var title = require('title');
-
-page('/', function (ctx, next) {
-  title('Gato Locoo');
-  var main = document.getElementById('screen');
-  empty(main).appendChild(template);
-
-  var botonInicio = document.getElementById('iniciar');
-
-  botonInicio.addEventListener('click', function () {
-    window.location = '/jugadores';
-  });
-});
-
-},{"./template":22,"empty-element":3,"page":4,"title":7}],22:[function(require,module,exports){
-var yo = require('yo-yo');
-var layout = require('../layout');
-
-var primerAnuncio = yo`<div class="col-xs-12 text-center uno">
-            <h1>Bienvenido a Gato Loco</h1>
-            <button class="btn btn-lg boton sep" id="iniciar">Iniciar Juego</button>
-          </div>`;
-
-module.exports = layout(primerAnuncio);
-
-},{"../layout":28,"yo-yo":8}],23:[function(require,module,exports){
-var page = require('page');
-
-require('./home');
-require('./jugadores');
-require('./juego');
-require('./historial');
-require('./comentarios');
-
-page();
-
-},{"./comentarios":17,"./historial":19,"./home":21,"./juego":24,"./jugadores":26,"page":4}],24:[function(require,module,exports){
-var page = require('page');
-var empty = require('empty-element');
-var template = require('./template');
-var title = require('title');
-
-page('/juego', function (ctx, next) {
-  title('Gato Locoo - A Jugar!');
-  var main = document.getElementById('screen');
-  empty(main).appendChild(template);
-});
-
-},{"./template":25,"empty-element":3,"page":4,"title":7}],25:[function(require,module,exports){
-var yo = require('yo-yo');
-var layout = require('../layout');
-
-var juego = yo`      <div class="tres">
+module.exports = function gato(jugadorActual, player1, player2, movP1, movP2) {
+  return yo`
+      <div class="tres col-xs-12">
         <div class="row">
           <div class="text-center col-xs-12">
-            <h3 clase="titulo">Turno de Irene</h3>
+            <h3 clase="titulo">Turno de ${jugadorActual}</h3>
           </div>
         </div>
         <div class="row">
@@ -2735,8 +2650,8 @@ var juego = yo`      <div class="tres">
             </div>
           </div>
           <div class="col-md-4 col-xs-12">
-            <p>Movimientos Emmanuel: 3</p>
-            <p>Movimientos Irene: 2</p>
+            <p>Movimientos ${player1}: <em>${movP1}</em></p>
+            <p>Movimientos ${player2}: <em>${movP2}</em></p>
           </div>
         </div>
         <div class="row">
@@ -2745,10 +2660,101 @@ var juego = yo`      <div class="tres">
           </div>
         </div>
       </div>`;
+};
 
-module.exports = layout(juego);
+},{"yo-yo":8}],20:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+var title = require('title');
 
-},{"../layout":28,"yo-yo":8}],26:[function(require,module,exports){
+page('/historial', function (ctx, next) {
+  title('Gato Locoo - Historial');
+  var main = document.getElementById('screen');
+  empty(main).appendChild(template);
+});
+
+},{"./template":21,"empty-element":3,"page":4,"title":7}],21:[function(require,module,exports){
+var yo = require('yo-yo');
+var layout = require('../layout');
+
+var historial = yo`      <div class="cuatro">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 text-center">
+            <h3 clase="titulo">Historial</h3>
+            <div class="historial">
+              <p>Emmanuel le ganó a Irene en 3 movimientos</p>
+              <button class="btn boton" id="comentar1">Comentar</button>
+            </div>
+            <div class="historial">
+              <p>Emmanuel le ganó a Eduardo en 4 movimientos</p>
+              <button class="btn boton" id="comentar2">Comentar</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+module.exports = layout(historial);
+
+},{"../layout":29,"yo-yo":8}],22:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+var title = require('title');
+
+page('/', function (ctx, next) {
+  title('Gato Locoo');
+  var main = document.getElementById('screen');
+  empty(main).appendChild(template);
+
+  var botonInicio = document.getElementById('iniciar');
+
+  botonInicio.addEventListener('click', function () {
+    window.location = '/jugadores';
+  });
+});
+
+},{"./template":23,"empty-element":3,"page":4,"title":7}],23:[function(require,module,exports){
+var yo = require('yo-yo');
+var layout = require('../layout');
+
+var primerAnuncio = yo`<div class="col-xs-12 text-center uno">
+            <h1>Bienvenido a Gato Loco</h1>
+            <button class="btn btn-lg boton sep" id="iniciar">Iniciar Juego</button>
+          </div>`;
+
+module.exports = layout(primerAnuncio);
+
+},{"../layout":29,"yo-yo":8}],24:[function(require,module,exports){
+var page = require('page');
+
+require('./home');
+require('./jugadores');
+require('./juego');
+require('./historial');
+require('./comentarios');
+
+page();
+
+},{"./comentarios":17,"./historial":20,"./home":22,"./juego":25,"./jugadores":27,"page":4}],25:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+var title = require('title');
+
+page('/juego', function (ctx, next) {
+  title('Gato Locoo - A Jugar!');
+  var main = document.getElementById('screen');
+  empty(main).appendChild(template);
+});
+
+},{"./template":26,"empty-element":3,"page":4,"title":7}],26:[function(require,module,exports){
+var yo = require('yo-yo');
+var gato = require('../gato');
+
+module.exports = gato('Susana', 'Javito', 'Susana', '2', '3');
+
+},{"../gato":19,"yo-yo":8}],27:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2775,7 +2781,7 @@ page('/jugadores', function (ctx, next) {
   });
 });
 
-},{"./template":27,"empty-element":3,"page":4,"title":7}],27:[function(require,module,exports){
+},{"./template":28,"empty-element":3,"page":4,"title":7}],28:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
 
@@ -2805,7 +2811,7 @@ var jugadores = yo`      <div class="dos">
 
 module.exports = layout(jugadores);
 
-},{"../layout":28,"yo-yo":8}],28:[function(require,module,exports){
+},{"../layout":29,"yo-yo":8}],29:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function layout(box) {
@@ -2840,4 +2846,4 @@ module.exports = function layout(box) {
   </div>`;
 };
 
-},{"yo-yo":8}]},{},[23]);
+},{"yo-yo":8}]},{},[24]);
