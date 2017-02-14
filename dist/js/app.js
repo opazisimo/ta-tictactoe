@@ -2603,16 +2603,16 @@ module.exports = layout(coment);
 },{"../layout":29,"yo-yo":8}],19:[function(require,module,exports){
 var yo = require('yo-yo');
 
-module.exports = function gato(jugAct, mp1, mp2) {
+module.exports = function gato(turno, mp1, mp2) {
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
 
-  function game(jugadorActual, player1, player2, movP1, movP2) {
+  function game(player1, player2, movP1, movP2) {
     return yo`
         <div class="tres col-xs-12">
           <div class="row">
             <div class="text-center col-xs-12">
-              <h3 clase="titulo">Turno de ${jugadorActual}</h3>
+              ${turno}
             </div>
           </div>
           <div class="row">
@@ -2666,7 +2666,7 @@ module.exports = function gato(jugAct, mp1, mp2) {
         </div>`;
   }
 
-  return game(jugAct, pl1, pl2, mp1, mp2);
+  return game(pl1, pl2, mp1, mp2);
 };
 
 },{"yo-yo":8}],20:[function(require,module,exports){
@@ -2906,11 +2906,12 @@ page('/juego', function (ctx, next) {
 },{"./template":26,"empty-element":3,"page":4,"title":7}],26:[function(require,module,exports){
 var yo = require('yo-yo');
 var gato = require('../gato');
+var turno = require('../turno');
 
 //
-module.exports = gato('jugAct', 'mp1', 'mp2');
+module.exports = gato(turno(), 'mp1', 'mp2');
 
-},{"../gato":19,"yo-yo":8}],27:[function(require,module,exports){
+},{"../gato":19,"../turno":30,"yo-yo":8}],27:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -3000,6 +3001,15 @@ module.exports = function layout(box) {
       </div>
     </div>
   </div>`;
+};
+
+},{"yo-yo":8}],30:[function(require,module,exports){
+var yo = require('yo-yo');
+
+var turni = 'hola';
+
+module.exports = function turno() {
+    return yo`<h3 clase="titulo">Turno de ${turni}</h3>`;
 };
 
 },{"yo-yo":8}]},{},[24]);

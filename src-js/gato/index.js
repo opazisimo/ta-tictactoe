@@ -1,16 +1,15 @@
 var yo = require('yo-yo');
 
-module.exports = function gato(jugAct, mp1, mp2){
+module.exports = function gato(turno, mp1, mp2){
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
 
-
-  function game(jugadorActual, player1, player2, movP1, movP2){
+  function game(player1, player2, movP1, movP2){
     return yo`
         <div class="tres col-xs-12">
           <div class="row">
             <div class="text-center col-xs-12">
-              <h3 clase="titulo">Turno de ${jugadorActual}</h3>
+              ${turno}
             </div>
           </div>
           <div class="row">
@@ -64,6 +63,6 @@ module.exports = function gato(jugAct, mp1, mp2){
         </div>`;
   }
 
-  return game(jugAct, pl1, pl2,mp1, mp2);
+  return game(pl1, pl2,mp1, mp2);
 
 }
