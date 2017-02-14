@@ -2617,7 +2617,7 @@ module.exports = function gato(turno, tablero, movs) {
         </div>
         <div class="row">
           <div class="col-xs-12 text-center sep">
-            <p><strong id='ganador'></strong></p> <button class="btn boton">Mandar al historial</button>
+            <p><strong id='ganador'></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
           </div>
         </div>
       </div>`;
@@ -2630,9 +2630,36 @@ var template = require('./template');
 var title = require('title');
 
 page('/historial', function (ctx, next) {
-  title('Gato Locoo - Historial');
-  var main = document.getElementById('screen');
-  empty(main).appendChild(template);
+    title('Gato Locoo - Historial');
+    var main = document.getElementById('screen');
+    empty(main).appendChild(template);
+
+    var comentar1 = document.getElementById('comentar1');
+
+    comentar1.addEventListener('click', function () {
+        window.location = '/comentarios';
+    });
+
+    $.ajax({
+        url: 'http://test-ta.herokuapp.com/games',
+        data: { id: 1 },
+        type: 'GET',
+        dataType: 'json',
+
+        success: function (json) {
+            alert('eeeh resultó');
+            $('<h1/>').text(json.winner_player).appendTo('body');
+            $('<div class="content"/>').html(json.html).appendTo('body');
+        },
+
+        error: function (xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+
+        complete: function (xhr, status) {
+            alert('Petición realizada');
+        }
+    });
 });
 
 },{"./template":21,"empty-element":3,"page":4,"title":7}],21:[function(require,module,exports){
@@ -2734,7 +2761,8 @@ page('/juego', function (ctx, next) {
       check();
       document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
     });
-    div.addEventListener('contextmenu', function () {
+    div.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
       div.innerHTML = o;
       oes.push(o);
       var oguarda = sessionStorage.setItem('oguarda', oes.length);
@@ -2862,6 +2890,11 @@ page('/juego', function (ctx, next) {
       }
     }
   }
+  var mandarHistorial = document.getElementById('mandarHistorial');
+
+  mandarHistorial.addEventListener('click', function () {
+    window.location = '/historial';
+  });
 });
 
 },{"./template":26,"empty-element":3,"page":4,"title":7}],26:[function(require,module,exports){

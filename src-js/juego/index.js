@@ -35,7 +35,8 @@ page('/juego', function(ctx, next){
       document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
 
     });
-    div.addEventListener('contextmenu', function() {
+    div.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
         div.innerHTML = o;
         oes.push(o);
         var oguarda = sessionStorage.setItem('oguarda', oes.length);
@@ -163,4 +164,9 @@ page('/juego', function(ctx, next){
       }
     }
   }
+  var mandarHistorial = document.getElementById('mandarHistorial');
+
+  mandarHistorial.addEventListener('click', function(){
+      window.location = '/historial';
+  });
 });
