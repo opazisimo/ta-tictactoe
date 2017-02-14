@@ -2760,15 +2760,22 @@ page('/juego', function (ctx, next) {
     c2: document.getElementById('c2'),
     c3: document.getElementById('c3')
   };
+  var x = 'X';
+  var o = 'O';
+  var equis = [];
+  var oes = [];
 
   function clickear(div) {
     div.addEventListener('click', function () {
-      div.innerHTML = 'X';
+      div.innerHTML = x;
+      equis.push(x);
+      console.log(equis.lenght);
       check();
     });
     div.addEventListener('contextmenu', function (ev) {
       ev.preventDefault();
-      div.innerHTML = 'O';
+      div.innerHTML = o;
+      oes.push(o);
       check();
     }, false);
   }
@@ -2784,62 +2791,54 @@ page('/juego', function (ctx, next) {
   clickear(tablero.c2);
   clickear(tablero.c3);
 
-  function contarX() {
-    var contadorX = 0;
-    tablero.t.onclick = function () {
-      contadorX++;
-      console.log(contadorX);
-    };
-  }
-
   function check() {
-    if (tablero.a1.innerHTML == "X") {
-      if (tablero.a2.innerHTML == "X") {
-        if (tablero.a3.innerHTML == "X") {
-          alert("ganoo X");
+    if (tablero.a1.innerHTML == 'X') {
+      if (tablero.a2.innerHTML == 'X') {
+        if (tablero.a3.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
-      if (tablero.b2.innerHTML == "X") {
-        if (tablero.c3.innerHTML == "X") {
-          alert("ganoo X");
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
-      if (tablero.b1.innerHTML == "X") {
-        if (tablero.c1.innerHTML == "X") {
-          alert("ganoo X");
-        }
-      }
-    }
-    if (tablero.a2.innerHTML == "X") {
-      if (tablero.b2.innerHTML == "X") {
-        if (tablero.c2.innerHTML == "X") {
-          alert("ganoo X");
+      if (tablero.b1.innerHTML == 'X') {
+        if (tablero.c1.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
     }
-    if (tablero.a3.innerHTML == "X") {
-      if (tablero.b2.innerHTML == "X") {
-        if (tablero.c1.innerHTML == "X") {
-          alert("ganoo X");
-        }
-      }
-      if (tablero.b3.innerHTML == "X") {
-        if (tablero.c3.innerHTML == "X") {
-          alert("ganoo X");
+    if (tablero.a2.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c2.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
     }
-    if (tablero.b1.innerHTML == "X") {
-      if (tablero.b2.innerHTML == "X") {
-        if (tablero.b3.innerHTML == "X") {
-          alert("ganoo X");
+    if (tablero.a3.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c1.innerHTML == 'X') {
+          alert('Ganó X');
+        }
+      }
+      if (tablero.b3.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
     }
-    if (tablero.c1.innerHTML == "X") {
-      if (tablero.c2.innerHTML == "X") {
-        if (tablero.c3.innerHTML == "X") {
-          alert("ganoo X");
+    if (tablero.b1.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.b3.innerHTML == 'X') {
+          alert('Ganó X');
+        }
+      }
+    }
+    if (tablero.c1.innerHTML == 'X') {
+      if (tablero.c2.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X');
         }
       }
     }

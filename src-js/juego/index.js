@@ -20,15 +20,22 @@ page('/juego', function(ctx, next){
     c2 : document.getElementById('c2'),
     c3 : document.getElementById('c3')
   };
+  var x = 'X';
+  var o = 'O';
+  var equis = [];
+  var oes = [];
 
   function clickear(div){
     div.addEventListener('click', function(){
-      div.innerHTML = 'X';
+      div.innerHTML =  x;
+      equis.push(x);
+      console.log(equis.lenght);
       check();
     });
     div.addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
-        div.innerHTML = 'O';
+        div.innerHTML = o;
+        oes.push(o);
         check();
     }, false);
   }
