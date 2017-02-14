@@ -8,39 +8,145 @@ page('/juego', function(ctx, next){
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
 
-  var a1 = document.getElementById('a1');
-  var a2 = document.getElementById('a2');
-  var a3 = document.getElementById('a3');
-
-  var b1 = document.getElementById('b1');
-  var b2 = document.getElementById('b2');
-  var b3 = document.getElementById('b3');
-
-  var c1 = document.getElementById('c1');
-  var c2 = document.getElementById('c2');
-  var c3 = document.getElementById('c3');
+  var tablero = {
+    t : document.getElementById('tablero'),
+    a1 : document.getElementById('a1'),
+    a2 : document.getElementById('a2'),
+    a3 : document.getElementById('a3'),
+    b1 : document.getElementById('b1'),
+    b2 : document.getElementById('b2'),
+    b3 : document.getElementById('b3'),
+    c1 : document.getElementById('c1'),
+    c2 : document.getElementById('c2'),
+    c3 : document.getElementById('c3')
+  };
 
   function clickear(div){
     div.addEventListener('click', function(){
       div.innerHTML = 'X';
+      check();
     });
     div.addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
         div.innerHTML = 'O';
+        check();
     }, false);
   }
+  clickear(tablero.a1);
+  clickear(tablero.a2);
+  clickear(tablero.a3);
+
+  clickear(tablero.b1);
+  clickear(tablero.b2);
+  clickear(tablero.b3);
+
+  clickear(tablero.c1);
+  clickear(tablero.c2);
+  clickear(tablero.c3);
 
 
+  function check(){
+  if (tablero.a1.innerHTML == 'X') {
+      if (tablero.a2.innerHTML == 'X') {
+        if (tablero.a3.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+       if (tablero.b1.innerHTML == 'X') {
+        if (tablero.c1.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+    }
+    if (tablero.a2.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c2.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+    }
+    if (tablero.a3.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.c1.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+      if (tablero.b3.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+    }
+    if (tablero.b1.innerHTML == 'X') {
+      if (tablero.b2.innerHTML == 'X') {
+        if (tablero.b3.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+    }
+    if (tablero.c1.innerHTML == 'X') {
+      if (tablero.c2.innerHTML == 'X') {
+        if (tablero.c3.innerHTML == 'X') {
+          alert('Ganó X')
+        }
+      }
+    }
 
-  clickear(a1);
-  clickear(a2);
-  clickear(a3);
-
-  clickear(b1);
-  clickear(b2);
-  clickear(b3);
-
-  clickear(c1);
-  clickear(c2);
-  clickear(c3);
+  //o
+  if (tablero.a1.innerHTML == 'O') {
+      if (tablero.a2.innerHTML == 'O') {
+        if (tablero.a3.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+      if (tablero.b2.innerHTML == 'O') {
+        if (tablero.c3.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+       if (tablero.b1.innerHTML == 'O') {
+        if (tablero.c1.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+    }
+    if (tablero.a2.innerHTML == 'O') {
+      if (tablero.b2.innerHTML == 'O') {
+        if (tablero.c2.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+    }
+    if (tablero.a3.innerHTML == 'O') {
+      if (tablero.b2.innerHTML == 'O') {
+        if (tablero.c1.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+      if (tablero.b3.innerHTML == 'O') {
+        if (tablero.c3.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+    }
+    if (tablero.b1.innerHTML == 'O') {
+      if (tablero.b2.innerHTML == 'O') {
+        if (tablero.b3.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+    }
+    if (tablero.c1.innerHTML == 'O') {
+      if (tablero.c2.innerHTML == 'O') {
+        if (tablero.c3.innerHTML == 'O') {
+          alert("ganoo O")
+        }
+      }
+    }
+  }
 });
