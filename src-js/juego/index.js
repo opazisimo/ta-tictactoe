@@ -32,6 +32,7 @@ page('/juego', function(ctx, next){
       var xguarda = sessionStorage.setItem('xguarda', equis.length);
       console.log(xguarda);
       check();
+
     });
     div.addEventListener('contextmenu', function() {
         div.innerHTML = o;
@@ -53,55 +54,57 @@ page('/juego', function(ctx, next){
   clickear(tablero.c2);
   clickear(tablero.c3);
 
+  var pl1 = sessionStorage.getItem('pl1');
+  var pl2 = sessionStorage.getItem('pl2');
 
   function check(){
   if (tablero.a1.innerHTML == 'X') {
       if (tablero.a2.innerHTML == 'X') {
         if (tablero.a3.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
        if (tablero.b1.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.a2.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c2.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.a3.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
       if (tablero.b3.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.b1.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.b3.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.c1.innerHTML == 'X') {
       if (tablero.c2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          alert('Ganó X')
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
         }
       }
     }
@@ -110,50 +113,50 @@ page('/juego', function(ctx, next){
   if (tablero.a1.innerHTML == 'O') {
       if (tablero.a2.innerHTML == 'O') {
         if (tablero.a3.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
        if (tablero.b1.innerHTML == 'O') {
         if (tablero.c1.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.a2.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c2.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.a3.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c1.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
       if (tablero.b3.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.b1.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.b3.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.c1.innerHTML == 'O') {
       if (tablero.c2.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          alert("ganoo O")
+          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
         }
       }
     }
