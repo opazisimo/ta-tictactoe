@@ -7,13 +7,6 @@ page('/comentarios', function(ctx, next){
   title('Gato Locoo - Comentarios del Juego');
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
-/*
-
-              <div class="comentario">
-                <p class="nombre">Andrea dice:</p>
-                <p class="comentado">Este es un comentario largo, porque quiero probar qué pasa si escribo más de los caracteres previstos y romper el layout css</p>
-              </div>
-*/
 
   var botonComent = document.getElementById('agregarcomentario');
   botonComent.addEventListener('click', function(){
@@ -33,7 +26,11 @@ page('/comentarios', function(ctx, next){
     pCom.appendChild(txCom);
     cajaCom.appendChild(pNombre);
     cajaCom.appendChild(pCom);
+    var first = document.getElementById('firstCom');
+    first.style.display = "none";
     caja.appendChild(cajaCom);
+    var nombreCom = " ";
+    var comentado = " ";
   })
 
 })

@@ -14,6 +14,9 @@ page('/historial', function(ctx, next){
       window.location = '/comentarios';
   });
 
+  var tituloHistoria = document.getElementById('mensajeHistorial').innerHTML;
+  sessionStorage.setItem('tituloHistoria', tituloHistoria);
+
 
 
 /*
