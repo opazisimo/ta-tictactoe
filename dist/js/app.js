@@ -2568,6 +2568,34 @@ page('/comentarios', function (ctx, next) {
   title('Gato Locoo - Comentarios del Juego');
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
+  /*
+  
+                <div class="comentario">
+                  <p class="nombre">Andrea dice:</p>
+                  <p class="comentado">Este es un comentario largo, porque quiero probar qué pasa si escribo más de los caracteres previstos y romper el layout css</p>
+                </div>
+  */
+
+  var botonComent = document.getElementById('agregarcomentario');
+  botonComent.addEventListener('click', function () {
+    var caja = document.getElementById('comBox');
+    var nombreCom = document.getElementById('nombreform').value;
+    var comentado = document.getElementById('comentarioform').value;
+
+    var cajaCom = document.createElement('div');
+    cajaCom.setAttribute('class', 'comentario');
+    var pNombre = document.createElement('p');
+    pNombre.setAttribute('class', 'nombre');
+    var pCom = document.createElement('p');
+    pCom.setAttribute('class', 'comentado');
+    var txNom = document.createTextNode(nombreCom + ' dice:');
+    var txCom = document.createTextNode(comentado);
+    pNombre.appendChild(txNom);
+    pCom.appendChild(txCom);
+    cajaCom.appendChild(pNombre);
+    cajaCom.appendChild(pCom);
+    caja.appendChild(cajaCom);
+  });
 });
 
 },{"./template":18,"empty-element":3,"page":4,"title":7}],18:[function(require,module,exports){
@@ -2578,7 +2606,7 @@ var coment = yo`      <div class="cuatro">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
             <h3 clase="titulo">"Emmanuel le ganó a Irene en 3 movimientos"</h3>
-            <div class="cajacomentarios">
+            <div id="comBox" class="cajacomentarios">
               <div class="comentario">
                 <p class="nombre">Blanca dice:</p>
                 <p class="comentado">LOL</p>
@@ -2617,7 +2645,7 @@ module.exports = function gato(turno, tablero, movs) {
         </div>
         <div class="row">
           <div class="col-xs-12 text-center sep">
-            <p><strong id='ganador'></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
+            <p><strong class="bounce" id="ganador"></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
           </div>
         </div>
       </div>`;
@@ -2640,26 +2668,25 @@ page('/historial', function (ctx, next) {
         window.location = '/comentarios';
     });
 
-    $.ajax({
-        url: 'http://test-ta.herokuapp.com/games',
-        data: { id: 1 },
-        type: 'GET',
-        dataType: 'json',
-
-        success: function (json) {
-            alert('eeeh resultó');
-            $('<h1/>').text(json.winner_player).appendTo('body');
-            $('<div class="content"/>').html(json.html).appendTo('body');
-        },
-
-        error: function (xhr, status) {
-            alert('Disculpe, existió un problema');
-        },
-
-        complete: function (xhr, status) {
-            alert('Petición realizada');
-        }
-    });
+    /*
+      $.ajax({
+          url : 'http://test-ta.herokuapp.com/games',
+          data : { id : 1 },
+          type : 'GET',
+          dataType : 'json',
+    
+          success : function(json) {
+              alert('eeeh resultó');
+          },
+    
+          error : function(xhr, status) {
+              alert('Disculpe, existió un problema');
+          },
+    
+          complete : function(xhr, status) {
+              alert('Petición realizada');
+          }
+      });*/
 });
 
 },{"./template":21,"empty-element":3,"page":4,"title":7}],21:[function(require,module,exports){
@@ -2672,6 +2699,7 @@ var historial = yo`      <div class="cuatro">
             <h3 clase="titulo">Historial</h3>
             <div class="historial">
               <p>Emmanuel le ganó a Irene en 3 movimientos</p>
+              <p class="meter"></p>
               <button class="btn boton" id="comentar1">Comentar</button>
             </div>
             <div class="historial">
@@ -2807,55 +2835,55 @@ page('/juego', function (ctx, next) {
 
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
-
+  var ganadorJuego = document.getElementById('ganador');
   function check() {
     if (tablero.a1.innerHTML == 'X') {
       if (tablero.a2.innerHTML == 'X') {
         if (tablero.a3.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
       if (tablero.b1.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.a2.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c2.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.a3.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
       if (tablero.b3.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.b1.innerHTML == 'X') {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.b3.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
     }
     if (tablero.c1.innerHTML == 'X') {
       if (tablero.c2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl1;
+          ganadorJuego.innerHTML = 'Ganó ' + pl1;
         }
       }
     }
@@ -2864,50 +2892,50 @@ page('/juego', function (ctx, next) {
     if (tablero.a1.innerHTML == 'O') {
       if (tablero.a2.innerHTML == 'O') {
         if (tablero.a3.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
       if (tablero.b1.innerHTML == 'O') {
         if (tablero.c1.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.a2.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c2.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.a3.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.c1.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
       if (tablero.b3.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó+s ' + pl2;
         }
       }
     }
     if (tablero.b1.innerHTML == 'O') {
       if (tablero.b2.innerHTML == 'O') {
         if (tablero.b3.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
     }
     if (tablero.c1.innerHTML == 'O') {
       if (tablero.c2.innerHTML == 'O') {
         if (tablero.c3.innerHTML == 'O') {
-          document.getElementById('ganador').innerHTML = 'Ganó ' + pl2;
+          ganadorJuego.innerHTML = 'Ganó ' + pl2;
         }
       }
     }
@@ -3032,8 +3060,8 @@ module.exports = function movs() {
 
   return yo`
           <div class="col-md-4 col-xs-12">
-            <p>Movimientos ${pl1}: <em id="clicks1"></em></p>
-            <p>Movimientos ${pl2}: <em id="clicks2"></em></p>
+            <p>Movimientos ${pl1}: <em id="clicks1">0</em></p>
+            <p>Movimientos ${pl2}: <em id="clicks2">0</em></p>
           </div>`;
 };
 

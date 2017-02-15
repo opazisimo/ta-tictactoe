@@ -5,7 +5,7 @@ var coment = yo`      <div class="cuatro">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
             <h3 clase="titulo">"Emmanuel le ganó a Irene en 3 movimientos"</h3>
-            <div class="cajacomentarios">
+            <div id="comBox" class="cajacomentarios">
               <div class="comentario">
                 <p class="nombre">Blanca dice:</p>
                 <p class="comentado">LOL</p>

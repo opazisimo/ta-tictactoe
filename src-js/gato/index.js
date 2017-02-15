@@ -14,7 +14,7 @@ module.exports = function gato(turno, tablero, movs){
         </div>
         <div class="row">
           <div class="col-xs-12 text-center sep">
-            <p><strong id='ganador'></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
+            <p><strong class="bounce" id="ganador"></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
           </div>
         </div>
       </div>`;

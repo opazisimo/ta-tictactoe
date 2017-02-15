@@ -14,6 +14,10 @@ page('/historial', function(ctx, next){
       window.location = '/comentarios';
   });
 
+
+
+
+/*
   $.ajax({
       url : 'http://test-ta.herokuapp.com/games',
       data : { id : 1 },
@@ -22,9 +26,6 @@ page('/historial', function(ctx, next){
 
       success : function(json) {
           alert('eeeh resultó');
-          $('<h1/>').text(json.winner_player).appendTo('body');
-          $('<div class="content"/>')
-              .html(json.html).appendTo('body');
       },
 
       error : function(xhr, status) {
@@ -34,6 +35,6 @@ page('/historial', function(ctx, next){
       complete : function(xhr, status) {
           alert('Petición realizada');
       }
-  });
+  });*/
 
 })

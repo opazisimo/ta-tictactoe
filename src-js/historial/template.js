@@ -7,6 +7,7 @@ var historial = yo`      <div class="cuatro">
             <h3 clase="titulo">Historial</h3>
             <div class="historial">
               <p>Emmanuel le ganó a Irene en 3 movimientos</p>
+              <p class="meter"></p>
               <button class="btn boton" id="comentar1">Comentar</button>
             </div>
             <div class="historial">
