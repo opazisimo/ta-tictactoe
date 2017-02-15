@@ -29,8 +29,6 @@ page('/juego', function(ctx, next){
     div.addEventListener('click', function(){
       div.innerHTML =  x;
       equis.push(x);
-      var xguarda = sessionStorage.setItem('xguarda', equis.length);
-      console.log(xguarda);
       check();
       document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
 
@@ -39,8 +37,6 @@ page('/juego', function(ctx, next){
       event.preventDefault();
         div.innerHTML = o;
         oes.push(o);
-        var oguarda = sessionStorage.setItem('oguarda', oes.length);
-        console.log(oguarda);
         check();
         document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl1;
     }, false);
@@ -63,10 +59,12 @@ page('/juego', function(ctx, next){
     div.addEventListener('click', function(){
       clicks += 1;
       document.getElementById('clicks1').innerHTML = clicks;
+      var guardaclick = sessionStorage.setItem('guardaclick', clicks);
     });
     div.addEventListener('contextmenu', function(){
       clCtx += 1;
       document.getElementById('clicks2').innerHTML = clicks;
+      var guardactx = sessionStorage.setItem('guardactx', clCtx);
     });
   }
   clickME(tablero.a1);
@@ -87,16 +85,19 @@ page('/juego', function(ctx, next){
       if (tablero.a2.innerHTML == 'X') {
         if (tablero.a3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
        if (tablero.b1.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -104,6 +105,7 @@ page('/juego', function(ctx, next){
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c2.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -111,11 +113,13 @@ page('/juego', function(ctx, next){
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
       if (tablero.b3.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -123,6 +127,7 @@ page('/juego', function(ctx, next){
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.b3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -130,6 +135,7 @@ page('/juego', function(ctx, next){
       if (tablero.c2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }

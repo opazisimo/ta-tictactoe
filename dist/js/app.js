@@ -2628,7 +2628,7 @@ var coment = yo`      <div class="cuatro">
 
 module.exports = layout(coment);
 
-},{"../layout":29,"yo-yo":8}],19:[function(require,module,exports){
+},{"../layout":30,"yo-yo":8}],19:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function gato(turno, tablero, movs) {
@@ -2652,6 +2652,16 @@ module.exports = function gato(turno, tablero, movs) {
 };
 
 },{"yo-yo":8}],20:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = function historia(jug1, jug2, mov) {
+              return yo`  <div class="historial">
+                <p>${jug1} le ganó a ${jug2} en ${mov} movimientos</p>
+                <button class="btn boton" id="comentar1">Comentar</button>
+              </div>`;
+};
+
+},{"yo-yo":8}],21:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2689,30 +2699,31 @@ page('/historial', function (ctx, next) {
       });*/
 });
 
-},{"./template":21,"empty-element":3,"page":4,"title":7}],21:[function(require,module,exports){
+},{"./template":22,"empty-element":3,"page":4,"title":7}],22:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
+var historia = require('../historia');
 
-var historial = yo`      <div class="cuatro">
+var guardaclick = sessionStorage.getItem('guardaclick');
+var pl1 = sessionStorage.getItem('pl1');
+var pl2 = sessionStorage.getItem('pl2');
+
+var historial = function (story) {
+  return yo`<div class="cuatro">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 text-center">
             <h3 clase="titulo">Historial</h3>
-            <div class="historial">
-              <p>Emmanuel le ganó a Irene en 3 movimientos</p>
-              <p class="meter"></p>
-              <button class="btn boton" id="comentar1">Comentar</button>
-            </div>
-            <div class="historial">
-              <p>Emmanuel le ganó a Eduardo en 4 movimientos</p>
-              <button class="btn boton" id="comentar2">Comentar</button>
+            <div id="cajahistorial">
+              ${story}
             </div>
           </div>
         </div>
       </div>`;
+};
 
-module.exports = layout(historial);
+module.exports = layout(historial(historia(pl1, pl2, guardaclick)));
 
-},{"../layout":29,"yo-yo":8}],22:[function(require,module,exports){
+},{"../historia":20,"../layout":30,"yo-yo":8}],23:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2730,7 +2741,7 @@ page('/', function (ctx, next) {
   });
 });
 
-},{"./template":23,"empty-element":3,"page":4,"title":7}],23:[function(require,module,exports){
+},{"./template":24,"empty-element":3,"page":4,"title":7}],24:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
 
@@ -2741,7 +2752,7 @@ var primerAnuncio = yo`<div class="col-xs-12 text-center uno">
 
 module.exports = layout(primerAnuncio);
 
-},{"../layout":29,"yo-yo":8}],24:[function(require,module,exports){
+},{"../layout":30,"yo-yo":8}],25:[function(require,module,exports){
 var page = require('page');
 
 require('./home');
@@ -2752,7 +2763,7 @@ require('./comentarios');
 
 page();
 
-},{"./comentarios":17,"./historial":20,"./home":22,"./juego":25,"./jugadores":27,"page":4}],25:[function(require,module,exports){
+},{"./comentarios":17,"./historial":21,"./home":23,"./juego":26,"./jugadores":28,"page":4}],26:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2784,8 +2795,6 @@ page('/juego', function (ctx, next) {
     div.addEventListener('click', function () {
       div.innerHTML = x;
       equis.push(x);
-      var xguarda = sessionStorage.setItem('xguarda', equis.length);
-      console.log(xguarda);
       check();
       document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl2;
     });
@@ -2793,8 +2802,6 @@ page('/juego', function (ctx, next) {
       event.preventDefault();
       div.innerHTML = o;
       oes.push(o);
-      var oguarda = sessionStorage.setItem('oguarda', oes.length);
-      console.log(oguarda);
       check();
       document.getElementById('turnoactual').innerHTML = 'Turno de ' + pl1;
     }, false);
@@ -2817,10 +2824,12 @@ page('/juego', function (ctx, next) {
     div.addEventListener('click', function () {
       clicks += 1;
       document.getElementById('clicks1').innerHTML = clicks;
+      var guardaclick = sessionStorage.setItem('guardaclick', clicks);
     });
     div.addEventListener('contextmenu', function () {
       clCtx += 1;
       document.getElementById('clicks2').innerHTML = clicks;
+      var guardactx = sessionStorage.setItem('guardactx', clCtx);
     });
   }
   clickME(tablero.a1);
@@ -2841,16 +2850,19 @@ page('/juego', function (ctx, next) {
       if (tablero.a2.innerHTML == 'X') {
         if (tablero.a3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
       if (tablero.b1.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -2858,6 +2870,7 @@ page('/juego', function (ctx, next) {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c2.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -2865,11 +2878,13 @@ page('/juego', function (ctx, next) {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.c1.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
       if (tablero.b3.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -2877,6 +2892,7 @@ page('/juego', function (ctx, next) {
       if (tablero.b2.innerHTML == 'X') {
         if (tablero.b3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -2884,6 +2900,7 @@ page('/juego', function (ctx, next) {
       if (tablero.c2.innerHTML == 'X') {
         if (tablero.c3.innerHTML == 'X') {
           ganadorJuego.innerHTML = 'Ganó ' + pl1;
+          var guardaclick = sessionStorage.setItem('guardaclick');
         }
       }
     }
@@ -2947,7 +2964,7 @@ page('/juego', function (ctx, next) {
   });
 });
 
-},{"./template":26,"empty-element":3,"page":4,"title":7}],26:[function(require,module,exports){
+},{"./template":27,"empty-element":3,"page":4,"title":7}],27:[function(require,module,exports){
 var yo = require('yo-yo');
 var gato = require('../gato');
 var turno = require('../turno');
@@ -2956,7 +2973,7 @@ var movs = require('../movs');
 //
 module.exports = gato(turno(), tablero(), movs());
 
-},{"../gato":19,"../movs":30,"../tablero":31,"../turno":32,"yo-yo":8}],27:[function(require,module,exports){
+},{"../gato":19,"../movs":31,"../tablero":32,"../turno":33,"yo-yo":8}],28:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2983,7 +3000,7 @@ page('/jugadores', function (ctx, next) {
   });
 });
 
-},{"./template":28,"empty-element":3,"page":4,"title":7}],28:[function(require,module,exports){
+},{"./template":29,"empty-element":3,"page":4,"title":7}],29:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
 
@@ -3013,7 +3030,7 @@ var jugadores = yo`      <div class="dos">
 
 module.exports = layout(jugadores);
 
-},{"../layout":29,"yo-yo":8}],29:[function(require,module,exports){
+},{"../layout":30,"yo-yo":8}],30:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function layout(box) {
@@ -3048,15 +3065,13 @@ module.exports = function layout(box) {
   </div>`;
 };
 
-},{"yo-yo":8}],30:[function(require,module,exports){
+},{"yo-yo":8}],31:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function movs() {
 
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
-  var xguarda = sessionStorage.getItem('xguarda');
-  var oguarda = sessionStorage.getItem('oguarda');
 
   return yo`
           <div class="col-md-4 col-xs-12">
@@ -3065,7 +3080,7 @@ module.exports = function movs() {
           </div>`;
 };
 
-},{"yo-yo":8}],31:[function(require,module,exports){
+},{"yo-yo":8}],32:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function tablero() {
@@ -3110,7 +3125,7 @@ module.exports = function tablero() {
             </div>`;
 };
 
-},{"yo-yo":8}],32:[function(require,module,exports){
+},{"yo-yo":8}],33:[function(require,module,exports){
 var yo = require('yo-yo');
 var pl1 = sessionStorage.getItem('pl1');
 
@@ -3118,4 +3133,4 @@ module.exports = function turno() {
     return yo`<h3 clase="titulo" id='turnoactual'>Turno de ${pl1}</h3>`;
 };
 
-},{"yo-yo":8}]},{},[24]);
+},{"yo-yo":8}]},{},[25]);

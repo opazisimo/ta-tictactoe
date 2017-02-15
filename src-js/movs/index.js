@@ -4,8 +4,6 @@ module.exports = function movs(){
 
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
-  var xguarda = sessionStorage.getItem('xguarda');
-  var oguarda = sessionStorage.getItem('oguarda');
 
   return yo`
           <div class="col-md-4 col-xs-12">

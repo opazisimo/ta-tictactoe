@@ -16,7 +16,6 @@ page('/historial', function(ctx, next){
 
 
 
-
 /*
   $.ajax({
       url : 'http://test-ta.herokuapp.com/games',
