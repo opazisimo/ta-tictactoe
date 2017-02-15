@@ -5,11 +5,11 @@ application.set('port',(process.env.PORT || 8086));
 application.use(express.static(__dirname + '/dist'));
 
 application.get('/', function(req,res){
-  res.render('dist/index');
+  res.render('dist/index.html');
 })
 
 application.get('/jugadores', function(req,res){
-  res.render('dist/index');
+  res.render('dist/index.html');
 })
 
 application.listen(application.get('port'), function(){
