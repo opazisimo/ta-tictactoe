@@ -2705,9 +2705,9 @@ var layout = require('../layout');
 var historia = require('../historia');
 
 var guardaclick = sessionStorage.getItem('guardaclick');
+var guardactx = sessionStorage.getItem('guardactx');
 var pl1 = sessionStorage.getItem('pl1');
 var pl2 = sessionStorage.getItem('pl2');
-
 var historial = function (story) {
   return yo`<div class="cuatro">
         <div class="row">
@@ -2720,8 +2720,14 @@ var historial = function (story) {
         </div>
       </div>`;
 };
-
-module.exports = layout(historial(historia(pl1, pl2, guardaclick)));
+function defineGanador() {
+  if (parseInt(guardaclick) > parseInt(guardactx)) {
+    return historia(pl1, pl2, guardaclick);
+  } else {
+    return historia(pl2, pl1, guardactx);
+  }
+}
+module.exports = layout(historial(defineGanador()));
 
 },{"../historia":20,"../layout":30,"yo-yo":8}],23:[function(require,module,exports){
 var page = require('page');
