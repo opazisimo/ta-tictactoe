@@ -9,8 +9,8 @@ module.exports = function movs(){
 
   return yo`
           <div class="col-md-4 col-xs-12">
-            <p>Movimientos ${pl1}: <em>${xguarda}</em></p>
-            <p>Movimientos ${pl2}: <em>${oguarda}</em></p>
+            <p>Movimientos ${pl1}: <em id="clicks1"></em></p>
+            <p>Movimientos ${pl2}: <em id="clicks2"></em></p>
           </div>`;
 
 };

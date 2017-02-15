@@ -57,6 +57,28 @@ page('/juego', function(ctx, next){
   clickear(tablero.c2);
   clickear(tablero.c3);
 
+  var clicks = 0;
+  var clCtx = 0;
+  function clickME(div) {
+    div.addEventListener('click', function(){
+      clicks += 1;
+      document.getElementById('clicks1').innerHTML = clicks;
+    });
+    div.addEventListener('contextmenu', function(){
+      clCtx += 1;
+      document.getElementById('clicks2').innerHTML = clicks;
+    });
+  }
+  clickME(tablero.a1);
+  clickME(tablero.a2);
+  clickME(tablero.a3);
+  clickME(tablero.b1);
+  clickME(tablero.b2);
+  clickME(tablero.b3);
+  clickME(tablero.c1);
+  clickME(tablero.c2);
+  clickME(tablero.c3);
+
   var pl1 = sessionStorage.getItem('pl1');
   var pl2 = sessionStorage.getItem('pl2');
 
