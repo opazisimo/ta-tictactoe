@@ -2738,11 +2738,10 @@ page('/', function (ctx, next) {
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
 
-  var botonInicio = document.getElementById('iniciar');
-
-  botonInicio.addEventListener('click', function () {
-    window.location = './jugadores';
-  });
+  /*var botonInicio = document.getElementById('iniciar');
+   botonInicio.addEventListener('click', function(){
+      window.location = './jugadores';
+  });*/
 });
 
 },{"./template":24,"empty-element":3,"page":4,"title":7}],24:[function(require,module,exports){
@@ -2751,7 +2750,7 @@ var layout = require('../layout');
 
 var primerAnuncio = yo`<div class="col-xs-12 text-center uno">
             <h1>Bienvenido a Gato Loco</h1>
-            <button class="btn btn-lg boton sep" id="iniciar">Iniciar Juego</button>
+            <a href="./jugadores" class="btn btn-lg boton sep" id="iniciar">Iniciar Juego</a>
           </div>`;
 
 module.exports = layout(primerAnuncio);
