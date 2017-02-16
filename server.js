@@ -8,9 +8,9 @@ application.get('/', function(req,res){
   res.render('index');
 })
 
-application.get('/jugadores', function(req,res){
+/*application.get('/jugadores', function(req,res){
   res.render('index');
-})
+})*/
 
 application.listen(application.get('port'), function(){
   console.log('Server en ', application.get('port'));
