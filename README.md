@@ -36,7 +36,7 @@ El proyecto fue realizado con las siguientes tecnologías:
 ## Levantar ambiente de desarrollo
 
 1. Clonar el repositorio.
-2. Correr npm install.
-3. Correr gulp.
-4. Abrir el browser y jugar 
+2. Correr `npm install`.
+3. Correr `gulp`.
+4. Abrir el browser, editar y/o jugar :wink:
 
