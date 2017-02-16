@@ -8,7 +8,7 @@ La finalidad de éste es medir nuestro nivel de conocimiento en JavaScript.
 Desarrollar un juego estilo *tic tac toe*, de dos jugadores humanos jugando alternadamente, 
 a los cuales se les pide su nombre. El juego nos debe avisar de quién es el turno actual, 
 mostrar un contador que incrementa con cada movimiento de los jugadores
-y además guardar el historial de cada juego, es decir, guardar el mensaje de registro de la jugada (Ej: *X le ganó a Y en X movimientos*)
+y además guardar el historial de cada juego, es decir, guardar el mensaje de registro de la jugada (Ej: *X le ganó a Y en Z movimientos*)
 Cada historial tiene un espacio para hacer comentarios sobre el juego finalizado.
 
 ### El Juego
