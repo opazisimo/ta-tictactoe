@@ -15,4 +15,3 @@ application.get('/jugadores', function(req,res){
 application.listen(application.get('port'), function(){
   console.log('Server en ', application.get('port'));
 });
-
