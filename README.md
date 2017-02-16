@@ -3,6 +3,8 @@
 *Gato Loco* es una evaluación de diagnóstico para todas las Teacher Assistant de Laboratoria.
 La finalidad de éste es medir nuestro nivel de conocimiento en JavaScript.
 
+Puedes encontrar el demo en http://gatoloco.herokuapp.com  :v:
+
 ## Misión
 
 Desarrollar un juego estilo *tic tac toe*, de dos jugadores humanos jugando alternadamente, 
