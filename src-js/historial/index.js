@@ -8,16 +8,8 @@ page('/historial', function(ctx, next){
   var main = document.getElementById('screen');
   empty(main).appendChild(template);
 
-  var comentar1 = document.getElementById('comentar1');
-
-  comentar1.addEventListener('click', function(){
-      window.location = '/comentarios';
-  });
-
   var tituloHistoria = document.getElementById('mensajeHistorial').innerHTML;
   sessionStorage.setItem('tituloHistoria', tituloHistoria);
-
-
 
 /*
   $.ajax({

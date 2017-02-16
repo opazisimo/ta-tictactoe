@@ -20,7 +20,7 @@ var jugadores = yo`      <div class="dos">
         </div>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <button class="btn btn-lg boton sep" id="comenzar">Comenzar</button>
+            <a class="btn btn-lg boton sep" id="comenzar">Comenzar</a>
           </div>
         </div>
       </div>`;
