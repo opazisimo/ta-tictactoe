@@ -16,7 +16,7 @@ page('/jugadores', function(ctx, next){
     if(document.getElementById('player1').value != null && document.getElementById('player2').value != null &&  document.getElementById('player1').value != 0 && document.getElementById('player2').value != 0){
       sessionStorage.setItem('pl1', document.getElementById('player1').value);
       sessionStorage.setItem('pl2', document.getElementById('player2').value);
-      botonComenzar.setAttribute('href', './juego');
+      window.location = './juego';
     }else{
       alert('Campos obligatorios');
       return false;

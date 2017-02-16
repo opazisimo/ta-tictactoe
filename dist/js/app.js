@@ -2640,7 +2640,7 @@ module.exports = function gato(turno, tablero, movs) {
         </div>
         <div class="row">
           <div class="col-xs-12 text-center sep">
-            <p><strong class="bounce" id="ganador"></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
+            <p><strong class="bounce" id="ganador"></strong></p> <a href="./historial" class="btn boton" id="mandarHistorial">Mandar al historial</a>
           </div>
         </div>
       </div>`;
@@ -2666,6 +2666,11 @@ page('/historial', function (ctx, next) {
     title('Gato Locoo - Historial');
     var main = document.getElementById('screen');
     empty(main).appendChild(template);
+
+    var comentar1 = document.getElementById('comentar1');
+    comentar1.addEventListener('click', function () {
+        window.location = './comentarios';
+    });
 
     var tituloHistoria = document.getElementById('mensajeHistorial').innerHTML;
     sessionStorage.setItem('tituloHistoria', tituloHistoria);
@@ -2989,7 +2994,7 @@ page('/jugadores', function (ctx, next) {
     if (document.getElementById('player1').value != null && document.getElementById('player2').value != null && document.getElementById('player1').value != 0 && document.getElementById('player2').value != 0) {
       sessionStorage.setItem('pl1', document.getElementById('player1').value);
       sessionStorage.setItem('pl2', document.getElementById('player2').value);
-      botonComenzar.setAttribute('href', './juego');
+      window.location = './juego';
     } else {
       alert('Campos obligatorios');
       return false;
