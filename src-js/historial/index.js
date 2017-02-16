@@ -11,7 +11,7 @@ page('/historial', function(ctx, next){
   var comentar1 = document.getElementById('comentar1');
 
   comentar1.addEventListener('click', function(){
-      window.location = '/comentarios';
+      window.location = './comentarios';
   });
 
   var tituloHistoria = document.getElementById('mensajeHistorial').innerHTML;

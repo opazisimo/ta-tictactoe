@@ -2640,7 +2640,7 @@ module.exports = function gato(turno, tablero, movs) {
         </div>
         <div class="row">
           <div class="col-xs-12 text-center sep">
-            <p><strong class="bounce" id="ganador"></strong></p> <button class="btn boton" id="mandarHistorial">Mandar al historial</button>
+            <p><strong class="bounce" id="ganador"></strong></p> <a href="./historial" class="btn boton" id="mandarHistorial">Mandar al historial</a>
           </div>
         </div>
       </div>`;
@@ -2652,7 +2652,7 @@ var yo = require('yo-yo');
 module.exports = function historia(jug1, jug2, mov) {
               return yo`  <div class="historial">
                 <p id="mensajeHistorial">${jug1} le ganó a ${jug2} en ${mov} movimientos</p>
-                <button class="btn boton" id="comentar1">Comentar</button>
+                <a href="./comentarios" class="btn boton" id="comentar1">Comentar</a>
               </div>`;
 };
 
@@ -2670,7 +2670,7 @@ page('/historial', function (ctx, next) {
     var comentar1 = document.getElementById('comentar1');
 
     comentar1.addEventListener('click', function () {
-        window.location = '/comentarios';
+        window.location = './comentarios';
     });
 
     var tituloHistoria = document.getElementById('mensajeHistorial').innerHTML;
@@ -2995,7 +2995,7 @@ page('/jugadores', function (ctx, next) {
     if (document.getElementById('player1').value != null && document.getElementById('player2').value != null && document.getElementById('player1').value != 0 && document.getElementById('player2').value != 0) {
       sessionStorage.setItem('pl1', document.getElementById('player1').value);
       sessionStorage.setItem('pl2', document.getElementById('player2').value);
-      window.location = '/juego';
+      window.location = './juego';
     } else {
       alert('Campos obligatorios');
       return false;
